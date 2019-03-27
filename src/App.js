@@ -34,10 +34,12 @@ class App extends Component {
                     <Button onClick={this.sendImage}/>
                 </div>
                 <div className="ImageBlock">
-                    <header className="App-header">
-                        <img src={logo} className="App-logo" alt="logo" />
-                        <h1 className="title">Meme</h1>
+                    <header className="header">
+                        <img src={logo} className="logo" alt="logo" />
                     </header>
+                </div>
+                <div className="footer">
+                    <h1 className="title">Deep Dark Learning</h1>
                 </div>
             </div>
         );
