@@ -2,7 +2,11 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Button from './components/button/button';
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUpload } from '@fortawesome/free-solid-svg-icons'
 
+library.add(faUpload);
 
 class App extends Component {
   state = {
@@ -31,8 +35,7 @@ class App extends Component {
               <img src={logo} className="App-logo" alt="logo" />
               <h1 className="title">Deep Dark Learning</h1>
           </header>
-
-          <Button onClick={this.sendImage} value="Загрузить изображение"/>
+          <Button onClick={this.sendImage}/>
       </div>
     );
   }
