@@ -10,7 +10,7 @@ const Button = ({ onClick }) => (
         action="">
         <div>
             <label htmlFor="upload">
-                <FontAwesomeIcon className="icon" icon="upload" size="3x"/><br/>
+                <FontAwesomeIcon className="icon" icon="upload" size="5x"/><br/>
                 Выберите изображение
                 <input
                     id="upload"
