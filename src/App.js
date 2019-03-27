@@ -27,17 +27,21 @@ class App extends Component {
               this.setState({data: {}, isFetching: false, error: e })});
   }
 
-  render() {
-    return (
-      <div className="App">
-          <Button onClick={this.sendImage}/>
-          <header className="App-header">
-              <img src={logo} className="App-logo" alt="logo" />
-              <h1 className="title">Deep Dark Learning</h1>
-          </header>
-      </div>
-    );
-  }
+    render() {
+        return (
+            <div className="MainWindow">
+                <div className="ButtonsBlock">
+                    <Button onClick={this.sendImage}/>
+                </div>
+                <div className="ImageBlock">
+                    <header className="App-header">
+                        <img src={logo} className="App-logo" alt="logo" />
+                        <h1 className="title">Meme</h1>
+                    </header>
+                </div>
+            </div>
+        );
+    }
 }
 
 /*class App extends Component {
