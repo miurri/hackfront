@@ -2,47 +2,48 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Button from './components/button/button';
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUpload } from '@fortawesome/free-solid-svg-icons'
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faUpload } from '@fortawesome/free-solid-svg-icons';
+import Image from './components/image/image'
 
 library.add(faUpload);
+
 class App extends Component {
-  state = {
-      data:{},
-      isFetching: true,
-      error: null
-  };
+    constructor(props) {
+        super(props);
+        this.state = {data:null,
+            isFetching: true,
+            error: null};
 
-  sendImage() {
-
-  }
-
-  componentWillMount() {
-      fetch('http://localhost:3000')
-          .then(response => response.json())
-          .then(result => this.setState({data: result, isFetching: false }))
-          .catch(e => {
-              console.log(e);
-              this.setState({data: {}, isFetching: false, error: e })});
-  }
-
-    render() {
-        return (
-            <div className="MainWindow">
-                <div className="ButtonsBlock">
-                    <Button onClick={this.sendImage}/>
-                </div>
-                <div className="ImageBlock">
-                    <header className="header">
-                    </header>
-                </div>
-                <div className="footer">
-                    <h1 className="title">Deep Dark Learning<img src={logo} className="logo" alt="logo" /></h1>
-                </div>
-            </div>
-        );
+        this.handleChange = this.handleChange.bind(this);
     }
+
+    handleChange(event) {
+        this.setState({data: URL.createObjectURL(event.target.files[0])});
+        console.log('change' + this.state.data);
+    }
+
+    componentWillMount() {
+        fetch('http://localhost:3000')
+            .then(response => response.json())
+            .then(result => this.setState({data: result, isFetching: false }))
+            .catch(e => {
+                console.log(e);
+                this.setState({data: null, isFetching: false, error: e })});
+  }
+
+  render() {
+    return (
+      <div className="App">
+          <header className="App-header">
+              <img src={logo} className="App-logo" alt="logo" />
+              <h1 className="title">Deep Dark Learning</h1>
+          </header>
+          <Button onChange={this.handleChange}/>
+          {this.state.data ? <Image src={this.state.data} descriprion="original"/> : <br/>}
+      </div>
+    );
+  }
 }
 
 /*class App extends Component {

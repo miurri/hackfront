@@ -1,34 +1,35 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import CSRFToken from '../csrf/csrf';
 import './button.css';
 
-const Button = ({ onClick }) => (
+const Button = ({ onChange }) => (
     <form
         className="FileUpload"
         method="post"
         action="">
+        <CSRFToken />
+        <FontAwesomeIcon className="icon" icon="upload" size="3x"/>
         <div>
-            <label htmlFor="upload">
-                <FontAwesomeIcon className="icon" icon="upload" size="5x"/><br/>
-                Выберите изображение
-                <input
-                    id="upload"
-                    className="button"
-                    onClick={onClick}
-                    type="file"
-                    name="file"
-                />
-            </label></div>
+        <input
+            id="upload"
+            className="button"
+            onChange={onChange}
+            type="file"
+            name="file"
+            accept="image/*"
+        />
+            <label htmlFor="upload">Выберите изображение</label></div>
     </form>
 );
 
 Button.propTypes = {
-    onClick: PropTypes.func
+    onChange: PropTypes.func
 };
 
 Button.defaultProps = {
-    onClick: () => {}
+    onChange: () => {}
 };
 
 export default Button;
