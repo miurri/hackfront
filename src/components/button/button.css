@@ -1,5 +1,5 @@
 .FileUpload{
-    background-color: rgba(134, 138, 146, 0.89);
+    background: rgba(134, 138, 146, 0.89);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -7,11 +7,15 @@
     height: 200px;
     margin: 15px;
     border-radius: 10px;
-    border: 4px dashed #212121;
+    border: 2px dashed #212121;
     outline-offset: -12px;
     text-align: center;
     color: #2f6173;
+    transition: 3s;
     font-family: "Helvetica Neue", sans-serif;
+}
+.FileUpload :hover{
+    color: #111519;
 }
 
 .FileUpload div {
@@ -30,6 +34,4 @@
     position: absolute;
     z-index: -10;
 }
-.FileUpload :hover{
-    color: #111519;
-}
+

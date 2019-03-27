@@ -35,11 +35,10 @@ class App extends Component {
                 </div>
                 <div className="ImageBlock">
                     <header className="header">
-                        <img src={logo} className="logo" alt="logo" />
                     </header>
                 </div>
                 <div className="footer">
-                    <h1 className="title">Deep Dark Learning</h1>
+                    <h1 className="title">Deep Dark Learning<img src={logo} className="logo" alt="logo" /></h1>
                 </div>
             </div>
         );

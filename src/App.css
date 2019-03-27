@@ -6,12 +6,14 @@ body{
   display: flex;
   flex-direction: column;
   padding: 10px;
+  font-family: "Helvetica Neue", sans-serif;
 }
 
 .ImageBlock{
   background-color: rgba(172, 183, 201, 0.8);
   align-items: center;
   opacity: .4;
+  border: 2px dashed #222222;
   border-radius: 10px;
   margin: 15px;
   justify-content: center;
@@ -23,6 +25,8 @@ body{
 }
 
 .logo {
+  width: 50px;
+  height: 50px;
   background-size: cover;
   animation: App-logo-spin infinite 20s linear;
   pointer-events: none;
@@ -31,6 +35,7 @@ body{
 .header {
   background-color: rgba(233, 235, 239, 0.89);
   border-radius: 10px;
+  min-height: 500px;
   margin: 15px;
   padding: 10px;
   align-items: center;
