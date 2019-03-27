@@ -7,7 +7,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUpload } from '@fortawesome/free-solid-svg-icons'
 
 library.add(faUpload);
-
 class App extends Component {
   state = {
       data:{},
@@ -31,11 +30,11 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+          <Button onClick={this.sendImage}/>
           <header className="App-header">
               <img src={logo} className="App-logo" alt="logo" />
               <h1 className="title">Deep Dark Learning</h1>
           </header>
-          <Button onClick={this.sendImage}/>
       </div>
     );
   }

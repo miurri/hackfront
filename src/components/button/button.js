@@ -8,16 +8,18 @@ const Button = ({ onClick }) => (
         className="FileUpload"
         method="post"
         action="">
-        <FontAwesomeIcon className="icon" icon="upload" size="3x"/>
         <div>
-        <input
-            id="upload"
-            className="button"
-            onClick={onClick}
-            type="file"
-            name="file"
-        />
-            <label htmlFor="upload">Выберите изображение</label></div>
+            <label htmlFor="upload">
+                <FontAwesomeIcon className="icon" icon="upload" size="3x"/><br/>
+                Выберите изображение
+                <input
+                    id="upload"
+                    className="button"
+                    onClick={onClick}
+                    type="file"
+                    name="file"
+                />
+            </label></div>
     </form>
 );
 
