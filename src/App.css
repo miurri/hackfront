@@ -35,6 +35,7 @@ body{
   font-size: calc(10px + 2vmin);
 }
 .footer{
+  color: white;
   display: flex;
   align-items: center;
   justify-content: center;

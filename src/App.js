@@ -4,9 +4,11 @@ import './App.css';
 import Button from './components/button/button';
 import {library} from '@fortawesome/fontawesome-svg-core';
 import {faUpload} from '@fortawesome/free-solid-svg-icons';
+import {faDownload} from '@fortawesome/free-solid-svg-icons';
 
 
 library.add(faUpload);
+library.add(faDownload);
 
 class App extends Component {
     render() {

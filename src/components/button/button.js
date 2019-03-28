@@ -37,7 +37,7 @@ class Button extends Component {
         super(props);
         this.state = {
             data: null,
-            result: null,
+            result: true,
             isFetching: true
         };
     }
@@ -119,49 +119,44 @@ class Button extends Component {
                         </form>
                     </DragAndDrop>
                 </div>
-                <div>
+                <div className="settings">
                     <form className="inputs"
                           method="post"
                           action="">
                         <CSRFToken/>
+                        <label htmlFor="brighteness">Яркость:</label>
                         <input type="range"
                                id="brighteness"
                                min="0"
                                max="2"
-                               step="0.01"
-                               value="1"
+                               step="0.1"
                         />
-                        <label htmlFor="brighteness">Яркость:</label>
+                        <label htmlFor="contrast">Контраст</label>
                         <input type="range"
                                id="contrast"
                                min="0"
                                max="2"
-                               step="0.01"
-                               value="1"
+                               step="0.1"
                         />
-                        <label htmlFor="contrast">Контраст</label>
+                        <label htmlFor="hasyshennost">Насыщенность:</label>
                         <input type="range"
                                id="hasyshennost"
                                min="0"
                                max="2"
-                               step="0.01"
-                               value="1"
+                               step="0.1"
                         />
-                        <label htmlFor="hasyshennost">Насыщенность:</label>
                         <input type="submit"
                                value="Применить"
                                onClick={this.sendform}
                         />
                     </form>
                 </div>
-                <span>
+                <div className="show">
                     {this.state.data ? <Image src={URL.createObjectURL(this.state.data)} descriprion="original"/> :
                         <br/>}
-                </span>
-                <span>
-                    {this.state.result ? <Image src={URL.createObjectURL(this.state.result)} descriprion="result"/> :
+                    {this.state.data ? <Image src={URL.createObjectURL(this.state.data)} descriprion="original"/> :
                         <br/>}
-                </span>
+                </div>
             </div>
         )
     }
