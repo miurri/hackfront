@@ -19,13 +19,14 @@ body{
 
 
 .logo {
+  height: 50px;
+  width: 50px;
   background-size: cover;
   animation: App-logo-spin infinite 30s linear;
   pointer-events: none;
 }
 
 .header {
-  background-color: rgba(233, 235, 239, 0.89);
   border-radius: 10px;
   margin: 15px;
   padding: 10px;
@@ -35,7 +36,6 @@ body{
 }
 .footer{
   text-align: center;
-  color: #898989;
 }
 
 

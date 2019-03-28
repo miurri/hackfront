@@ -32,13 +32,14 @@ class App extends Component {
     render() {
         return (
             <div className="MainWindow">
-                    <Button/>
+                <header>
+                </header>
+                <Button/>
                 <div className="ImageBlock">
                 </div>
-                <header className="header">
-                    <img src={logo} className="logo" alt="logo"/>
-                    <h1 className="title">Deep Dark Learning</h1>
-                </header>
+                <footer>
+                    <h1 className="title">Deep Dark Learning<img src={logo} className="logo" alt="logo"/></h1>
+                </footer>
             </div>
         );
     }
