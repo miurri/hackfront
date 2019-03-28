@@ -3,6 +3,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import Image from '../image/image'
 import './button.css';
 import axios from 'axios';
+import DragAndDrop from '../dnd/dnd';
 
 axios.defaults.xsrfCookieName = 'csrftoken';
 axios.defaults.xsrfHeaderName = 'X-CSRFToken';
@@ -37,7 +38,7 @@ class Button extends Component {
         this.state = {data: null, url: ''};
     }
 
-    sendform = () => {
+    sendform = (e) => {
         fetch('url', {
             credentials: 'include',
             method: 'POST',
@@ -48,6 +49,15 @@ class Button extends Component {
                 'X-CSRFToken': csrftoken
             },
             body: this.state.data
+        });
+        e.preventDefault();
+    };
+
+
+    handleDrop = (file) => {
+        this.setState({
+            data: file[0],
+            url: URL.createObjectURL(file[0])
         })
     };
 
@@ -60,32 +70,37 @@ class Button extends Component {
         console.log(event.target.files[0]);
     };
 
+
+
     render() {
         return (
             <div>
-                <form
-                    className="FileUpload"
-                    method="post"
-                    action="multipart/form-data">
-                    <CSRFToken/>
-                    <FontAwesomeIcon className="icon" icon="upload" size="3x"/>
-                    <div>
+                <DragAndDrop handleDrop={this.handleDrop}>
+                    <form
+                        className="FileUpload"
+                        method="post"
+                        action="multipart/form-data">
+                        <CSRFToken/>
+                        <FontAwesomeIcon className="icon" icon="upload" size="3x"/>
+                        <div>
+                            <input
+                                id="upload"
+                                className="button"
+                                onChange={this.handleChange}
+                                type="file"
+                                name="file"
+                                accept="image/*"
+                            />
+                            <label htmlFor="upload">Выберите изображение</label>
+                        </div>
                         <input
-                            id="upload"
-                            className="button"
-                            onChange={this.handleChange}
-                            type="file"
-                            name="file"
-                            accept="image/*"
+                            className="submit"
+                            type="submit"
+                            value="Отправить"
+                            onClick={this.sendform}
                         />
-                        <label htmlFor="upload">Выберите изображение</label></div>
-                    <input
-                        className="submit"
-                        type="submit"
-                        value="Отправить"
-                        onClick={this.sendform}
-                    />
-                </form>
+                    </form>
+                </DragAndDrop>
                 {this.state.data ? <Image src={this.state.url} descriprion="original"/> : <br/>}
             </div>
         )
