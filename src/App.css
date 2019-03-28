@@ -18,18 +18,15 @@ body{
 }
 
 
-.App {
-  text-align: center;
-}
-
 .logo {
+  height: 50px;
+  width: 50px;
   background-size: cover;
-  animation: App-logo-spin infinite 20s linear;
+  animation: App-logo-spin infinite 30s linear;
   pointer-events: none;
 }
 
 .header {
-  background-color: rgba(233, 235, 239, 0.89);
   border-radius: 10px;
   margin: 15px;
   padding: 10px;
@@ -38,8 +35,14 @@ body{
   font-size: calc(10px + 2vmin);
 }
 .footer{
-  text-align: center;
-  color: #898989;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  opacity: .8;
+  margin: 15px;
+  padding: 10px;
+  font-size: calc(4px + 2vmin);
 }
 
 
