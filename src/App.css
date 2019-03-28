@@ -35,7 +35,14 @@ body{
   font-size: calc(10px + 2vmin);
 }
 .footer{
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  opacity: .8;
+  margin: 15px;
+  padding: 10px;
+  font-size: calc(4px + 2vmin);
 }
 
 

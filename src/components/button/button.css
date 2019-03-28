@@ -1,5 +1,5 @@
 .FileUpload{
-    background-color: rgba(146, 130, 110, 0.89);
+    background-color: rgba(97, 100, 106, 0.89);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -10,7 +10,7 @@
     border: 2px dashed #212121;
     outline-offset: -12px;
     text-align: center;
-    color: #2f6173;
+    color: #5ab4c2;
     font-family: "Helvetica Neue", sans-serif;
 }
 

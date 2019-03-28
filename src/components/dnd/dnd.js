@@ -66,7 +66,7 @@ class DragAndDrop extends Component {
     }
     render() {
         return (
-            <div className="container" ref={this.dropRef}>
+            <div ref={this.dropRef}>
                 {this.props.children}
             </div>
         )

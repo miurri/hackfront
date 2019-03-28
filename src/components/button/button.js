@@ -4,6 +4,7 @@ import Image from '../image/image'
 import './button.css';
 import axios from 'axios';
 import DragAndDrop from '../dnd/dnd';
+import logo from "../../logo.svg";
 
 axios.defaults.xsrfCookieName = 'csrftoken';
 axios.defaults.xsrfHeaderName = 'X-CSRFToken';
@@ -34,8 +35,11 @@ const CSRFToken = () => {
 class Button extends Component {
     constructor(props) {
         super(props);
-        this.fileReader = new FileReader();
-        this.state = {data: null, url: ''};
+        this.state = {
+            data: null,
+            result: null,
+            isFetching: true
+        };
     }
 
     sendform = (e) => {
@@ -49,32 +53,45 @@ class Button extends Component {
                 'X-CSRFToken': csrftoken
             },
             body: this.state.data
-        });
+        })
+            .then(response => response.json())
+            .then(result => this.setState({
+                result: result,
+                isFetching: false}))
+            .catch(e => {
+                console.log(e);
+                this.setState({
+                    data: null,
+                    isFetching: false,
+                    error: e})
+            });
         e.preventDefault();
     };
 
-
     handleDrop = (file) => {
         this.setState({
-            data: file[0],
-            url: URL.createObjectURL(file[0])
+            data: file[0]
         })
     };
 
     handleChange = (event) => {
         console.log("s00");
         this.setState({
-            data: event.target.files[0],
-            url: URL.createObjectURL(event.target.files[0])
+            data: event.target.files[0]
         });
         console.log(event.target.files[0]);
     };
 
 
 
+
     render() {
         return (
             <div>
+                <footer className="footer">
+                    <h1>Deep Dark Learning<img src={logo} className="logo" alt="logo"/></h1>
+                </footer>
+                <div>
                 <DragAndDrop handleDrop={this.handleDrop}>
                     <form
                         className="FileUpload"
@@ -101,7 +118,13 @@ class Button extends Component {
                         />
                     </form>
                 </DragAndDrop>
-                {this.state.data ? <Image src={this.state.url} descriprion="original"/> : <br/>}
+                </div>
+                <span>
+                    {this.state.data ? <Image src={URL.createObjectURL(this.state.data)} descriprion="original"/> : <br/>}
+                </span>
+                <span>
+                    {this.state.result ? <Image src={URL.createObjectURL(this.state.result)} descriprion="result"/> : <br/>}
+                </span>
             </div>
         )
     }
