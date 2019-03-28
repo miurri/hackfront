@@ -4,7 +4,7 @@ import './App.css';
 import Button from './components/button/button';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faUpload } from '@fortawesome/free-solid-svg-icons';
-import Image from './components/image/image'
+import DragAndDrop from './components/dnd/dnd'
 
 library.add(faUpload);
 
@@ -15,13 +15,12 @@ class App extends Component {
             isFetching: true,
             error: null};
 
-        this.handleChange = this.handleChange.bind(this);
     }
 
-    handleChange(event) {
-        this.setState({data: URL.createObjectURL(event.target.files[0])});
-        console.log('change' + this.state.data);
-    }
+
+    handleDrop = (file) => {
+        this.setState({data: URL.createObjectURL(file[0])})
+    };
 
     componentWillMount() {
         fetch('http://localhost:3000')
@@ -39,8 +38,9 @@ class App extends Component {
               <img src={logo} className="App-logo" alt="logo" />
               <h1 className="title">Deep Dark Learning</h1>
           </header>
-          <Button onChange={this.handleChange}/>
-          {this.state.data ? <Image src={this.state.data} descriprion="original"/> : <br/>}
+          <DragAndDrop handleDrop={this.handleDrop}>
+              <Button />
+          </DragAndDrop>
       </div>
     );
   }
