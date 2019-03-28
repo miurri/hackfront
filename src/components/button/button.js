@@ -57,13 +57,15 @@ class Button extends Component {
             .then(response => response.json())
             .then(result => this.setState({
                 result: result,
-                isFetching: false}))
+                isFetching: false
+            }))
             .catch(e => {
                 console.log(e);
                 this.setState({
                     data: null,
                     isFetching: false,
-                    error: e})
+                    error: e
+                })
             });
         e.preventDefault();
     };
@@ -83,8 +85,6 @@ class Button extends Component {
     };
 
 
-
-
     render() {
         return (
             <div>
@@ -92,38 +92,75 @@ class Button extends Component {
                     <h1>Deep Dark Learning<img src={logo} className="logo" alt="logo"/></h1>
                 </footer>
                 <div>
-                <DragAndDrop handleDrop={this.handleDrop}>
-                    <form
-                        className="FileUpload"
-                        method="post"
-                        action="multipart/form-data">
-                        <CSRFToken/>
-                        <FontAwesomeIcon className="icon" icon="upload" size="3x"/>
-                        <div>
+                    <DragAndDrop handleDrop={this.handleDrop}>
+                        <form
+                            className="FileUpload"
+                            method="post"
+                            action="multipart/form-data">
+                            <CSRFToken/>
+                            <FontAwesomeIcon className="icon" icon="upload" size="3x"/>
+                            <div>
+                                <input
+                                    id="upload"
+                                    className="button"
+                                    onChange={this.handleChange}
+                                    type="file"
+                                    name="file"
+                                    accept="image/*"
+                                />
+                                <label htmlFor="upload">Выберите изображение</label>
+                            </div>
                             <input
-                                id="upload"
-                                className="button"
-                                onChange={this.handleChange}
-                                type="file"
-                                name="file"
-                                accept="image/*"
+                                className="submit"
+                                type="submit"
+                                value="Отправить"
+                                onClick={this.sendform}
                             />
-                            <label htmlFor="upload">Выберите изображение</label>
-                        </div>
-                        <input
-                            className="submit"
-                            type="submit"
-                            value="Отправить"
-                            onClick={this.sendform}
+                        </form>
+                    </DragAndDrop>
+                </div>
+                <div>
+                    <form className="inputs"
+                          method="post"
+                          action="">
+                        <CSRFToken/>
+                        <input type="range"
+                               id="brighteness"
+                               min="0"
+                               max="2"
+                               step="0.01"
+                               value="1"
+                        />
+                        <label htmlFor="brighteness">Яркость:</label>
+                        <input type="range"
+                               id="contrast"
+                               min="0"
+                               max="2"
+                               step="0.01"
+                               value="1"
+                        />
+                        <label htmlFor="contrast">Контраст</label>
+                        <input type="range"
+                               id="hasyshennost"
+                               min="0"
+                               max="2"
+                               step="0.01"
+                               value="1"
+                        />
+                        <label htmlFor="hasyshennost">Насыщенность:</label>
+                        <input type="submit"
+                               value="Применить"
+                               onClick={this.sendform}
                         />
                     </form>
-                </DragAndDrop>
                 </div>
                 <span>
-                    {this.state.data ? <Image src={URL.createObjectURL(this.state.data)} descriprion="original"/> : <br/>}
+                    {this.state.data ? <Image src={URL.createObjectURL(this.state.data)} descriprion="original"/> :
+                        <br/>}
                 </span>
                 <span>
-                    {this.state.result ? <Image src={URL.createObjectURL(this.state.result)} descriprion="result"/> : <br/>}
+                    {this.state.result ? <Image src={URL.createObjectURL(this.state.result)} descriprion="result"/> :
+                        <br/>}
                 </span>
             </div>
         )
