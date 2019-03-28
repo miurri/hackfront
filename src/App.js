@@ -11,9 +11,11 @@ library.add(faUpload);
 class App extends Component {
     constructor(props) {
         super(props);
-        this.state = {data:null,
+        this.state = {
+            data: null,
             isFetching: true,
-            error: null};
+            error: null
+        };
 
     }
 
@@ -25,25 +27,32 @@ class App extends Component {
     componentWillMount() {
         fetch('http://localhost:3000')
             .then(response => response.json())
-            .then(result => this.setState({data: result, isFetching: false }))
+            .then(result => this.setState({data: result, isFetching: false}))
             .catch(e => {
                 console.log(e);
-                this.setState({data: null, isFetching: false, error: e })});
-  }
+                this.setState({data: null, isFetching: false, error: e})
+            });
+    }
 
-  render() {
-    return (
-      <div className="App">
-          <header className="App-header">
-              <img src={logo} className="App-logo" alt="logo" />
-              <h1 className="title">Deep Dark Learning</h1>
-          </header>
-          <DragAndDrop handleDrop={this.handleDrop}>
-              <Button />
-          </DragAndDrop>
-      </div>
-    );
-  }
+    render() {
+        return (
+            <div className="MainWindow">
+                <div className="ButtonsBlock">
+                    <DragAndDrop handleDrop={this.handleDrop}>
+                        <Button onClick={this.sendImage}/>
+                    </DragAndDrop>
+                </div>
+                <div className="ImageBlock">
+                    <header className="header">
+                        <img src={logo} className="logo" alt="logo"/>
+                    </header>
+                </div>
+                <div className="footer">
+                    <h1 className="title">Deep Dark Learning</h1>
+                </div>
+            </div>
+        );
+    }
 }
 
 /*class App extends Component {
