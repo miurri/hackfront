@@ -21,6 +21,12 @@ const Button = ({ onChange }) => (
             accept="image/*"
         />
             <label htmlFor="upload">Выберите изображение</label></div>
+        <input
+            className="submit"
+            type="submit"
+            value="Отправить"
+            onClick={(e) => {e.preventDefault(); console.log('send form')}}
+        />
     </form>
 );
 
@@ -33,3 +39,7 @@ Button.defaultProps = {
 };
 
 export default Button;
+
+function sendform() {
+
+}
